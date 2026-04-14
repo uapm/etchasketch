@@ -1,1 +1,20 @@
-/*css will be here*/
+* { 
+	box-sizing: border-box; 
+	margin: 0;
+	padding: 0;
+}
+
+html { font-size: 62.5%; }
+
+body { font-size: 1.6rem; }
+
+.container {
+	display: flex;
+	width: 10cm;
+	height: 10cm;
+}
+.blues {
+	width: 200px;
+	height: 100px;
+	background-color: lightblue;
+}
