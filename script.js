@@ -3,6 +3,7 @@ const pixel = document.createElement('div');
 
 
 function makeGrid(resolution) {
+	if (resolution <= 100) {
 	function changeColor(id) {
 		const pix = document.querySelector(id);
 		if (pix.dataset.opacity !== '100') {
@@ -24,5 +25,7 @@ function makeGrid(resolution) {
 
 	container.appendChild(looPix);
 	let opacity = 0
+	}} else {
+		console.log('input too high')
 	}
 }
