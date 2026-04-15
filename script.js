@@ -1,34 +1,28 @@
 const container = document.querySelector('.container');
 const pixel = document.createElement('div');
-let res = 16;
-
 
 
 function makeGrid(resolution) {
-	let looPix;
-	function changeColor() {
-		if (opacity !== 100) {
-			opacity += 10;
-			dynColor = `rgb(0 0 0 / ${opacity}%)`;
-			pixel.style.background = dynColor;
-			looPix.style.background = dynColor;
-			console.log(dynColor)
+	function changeColor(id) {
+		const pix = document.querySelector(id);
+		if (pix.dataset.opacity !== '100') {
+			let opacityOld = pix.dataset.opacity;
+			opacityNew = +opacityOld +10;
+			pix.style.background = `rgb(0 0 0 / ${opacityNew}%)`
+			pix.setAttribute('data-opacity', `${opacityNew}`);
 		}
 	}
 	const pixDim = `${15 / resolution}cm`
-	pixel.style.width = pixDim;
-	pixel.style.height = pixDim;
+	pixel.style.width = pixel.style.height = pixDim;
 	pixel.style.border = '0.1px solid, #00000020';
-	let opacity = 0;
-	let dynColor = `rgb(0 0 0 / ${opacity}%)`;
-	pixel.style.background = dynColor;
-	pixel.addEventListener('mouseover', changeColor);
-	pixel.addEventListener('click', () => console.log('yea'))
-	container.appendChild(pixel);
 
-	for (let i = 1; i < resolution ** 2 && i < 10000; i++) {
-	looPix = pixel.cloneNode(true);
-	// looPix.addEventListener('mouseover', changeColor);
+	for (let i = 0; i < resolution ** 2 && i < 10000; i++) {
+	let looPix = pixel.cloneNode(true);
+	looPix.id = `pixel${i+1}`;
+	looPix.setAttribute('data-opacity', '0');
+	looPix.addEventListener('mouseover', () => changeColor(`#pixel${i+1}`));
+
 	container.appendChild(looPix);
+	let opacity = 0
 	}
 }
