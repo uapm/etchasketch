@@ -11,6 +11,7 @@ function makeGrid(resolution) {
 			opacity += 10;
 			dynColor = `rgb(0 0 0 / ${opacity}%)`;
 			pixel.style.background = dynColor;
+			looPix.style.background = dynColor;
 			console.log(dynColor)
 		}
 	}
@@ -22,9 +23,12 @@ function makeGrid(resolution) {
 	let dynColor = `rgb(0 0 0 / ${opacity}%)`;
 	pixel.style.background = dynColor;
 	pixel.addEventListener('mouseover', changeColor);
+	pixel.addEventListener('click', () => console.log('yea'))
 	container.appendChild(pixel);
+
 	for (let i = 1; i < resolution ** 2 && i < 10000; i++) {
 	looPix = pixel.cloneNode(true);
+	// looPix.addEventListener('mouseover', changeColor);
 	container.appendChild(looPix);
 	}
 }
