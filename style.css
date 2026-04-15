@@ -10,8 +10,9 @@ body { font-size: 1.6rem; }
 
 .container {
 	display: flex;
-	width: 10cm;
-	height: 10cm;
+	flex-flow: row wrap;
+	width: 15cm;
+	height: 15cm;
 }
 .blues {
 	width: 200px;
