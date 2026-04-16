@@ -1,15 +1,20 @@
 const container = document.querySelector('.container');
 const pixel = document.createElement('div');
+const input = document.querySelector('input')
+const button = document.querySelector('button')
 
+button.addEventListener('click', () => makeGrid(input.value))
 
 function makeGrid(resolution) {
+	removeAllChildNodes(container);
 	if (resolution <= 100) {
 	function changeColor(id) {
+		let rgbValue = getRandomRgbValue();
 		const pix = document.querySelector(id);
 		if (pix.dataset.opacity !== '100') {
 			let opacityOld = pix.dataset.opacity;
 			opacityNew = +opacityOld +10;
-			pix.style.background = `rgb(0 0 0 / ${opacityNew}%)`
+			pix.style.background = `rgb(${rgbValue} / ${opacityNew}%)`
 			pix.setAttribute('data-opacity', `${opacityNew}`);
 		}
 	}
@@ -28,4 +33,18 @@ function makeGrid(resolution) {
 	}} else {
 		console.log('input too high')
 	}
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function getRandomRgbValue() {
+	let randomize = () => Math.floor(Math.random() * 255)
+	let red = randomize();
+	let blue = randomize();
+	let green = randomize();
+	return `${red} ${green} ${blue}`
 }

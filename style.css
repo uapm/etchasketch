@@ -14,8 +14,7 @@ body { font-size: 1.6rem; }
 	width: 15cm;
 	height: 15cm;
 }
-.blues {
-	width: 200px;
-	height: 100px;
-	background-color: lightblue;
+
+input {
+	width: 19rem;
 }
